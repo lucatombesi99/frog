@@ -7,19 +7,29 @@ import java.util.*;
 
 public class AudioEffects {
 
-    private final static String frogSound = new File(Main.AUDIO_PATH + "frog.wav").toURI().toString();
-    private final static String carPassSound= new File(Main.AUDIO_PATH + "car-pass.wav").toURI().toString();
-    private final static String splashSound= new File(Main.AUDIO_PATH + "splash.wav").toURI().toString();
-    private final static String waterSplashSound= new File(Main.AUDIO_PATH + "water-splash.wav").toURI().toString();
-    private final static String sirenSound= new File(Main.AUDIO_PATH + "siren.wav").toURI().toString();
-    private final static String hornSound= new File(Main.AUDIO_PATH + "long-horn.wav").toURI().toString();
+    static String frogSound = new File(Main.AUDIO_PATH + "frog.wav").toURI().toString();
+    static String carPassSound= new File(Main.AUDIO_PATH + "car-pass.wav").toURI().toString();
+    static String splashSound= new File(Main.AUDIO_PATH + "splash.wav").toURI().toString();
+    static String waterSplashSound= new File(Main.AUDIO_PATH + "water-splash.wav").toURI().toString();
+    static String sirenSound= new File(Main.AUDIO_PATH + "siren.wav").toURI().toString();
+    static String hornSound= new File(Main.AUDIO_PATH + "long-horn.wav").toURI().toString();
+    static String jump = new File(Main.AUDIO_PATH + "jump.wav").toURI().toString();
+    static String goal = new File(Main.AUDIO_PATH + "goal.wav").toURI().toString();
+    static String bonusSound = new File(Main.AUDIO_PATH + "bonus.wav").toURI().toString();
+    static String die= new File(Main.AUDIO_PATH + "frog_die.wav").toURI().toString();
+    public final static AudioClip bonus = new AudioClip(bonusSound);
+    public final static AudioClip frogJump = new AudioClip(jump);
+    public final static AudioClip frogGoal = new AudioClip(goal);
+    public final static AudioClip frogDie = new AudioClip(die);
+
+
 
     //FROG EFFECT
     private final static  AudioClip frogAudio = new AudioClip(frogSound);
 
     //WATER EFFECTS
     private final static AudioClip splash= new AudioClip(splashSound);
-    private final static AudioClip waterSplash= new AudioClip(waterSplashSound);
+    public final static AudioClip waterSplash= new AudioClip(waterSplashSound);
 
     //ROAD EFFECTS
     private final static AudioClip siren = new AudioClip(sirenSound);

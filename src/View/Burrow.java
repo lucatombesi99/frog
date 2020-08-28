@@ -6,7 +6,6 @@ import java.io.File;
 
 public class Burrow extends Entity {
 
-    private boolean full=false;
 
     public Burrow(int x,int y){
         setImage(new Image(new File(Main.IMAGE_PATH+"End.png").toURI().toString(), 31, 31, true, true));
@@ -16,12 +15,7 @@ public class Burrow extends Entity {
 
     public void setFrogEnd(){
         setImage(new Image(new File(Main.IMAGE_PATH+"FrogEnd.png").toURI().toString(), 31, 31, true, true));
-        full= true;
-    }
 
-
-    public boolean isFull(){
-        return full;
     }
 
 

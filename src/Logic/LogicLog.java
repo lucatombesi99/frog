@@ -1,8 +1,6 @@
 package Logic;
 
-import javafx.scene.image.Image;
 
-import java.io.File;
 
 public class LogicLog extends LogicEntities {
 

@@ -1,10 +1,9 @@
 package Logic;
 
-import View.Main;
-import javafx.scene.image.Image;
+
 import javafx.scene.paint.Color;
 
-import java.io.File;
+
 
 public class LogicBurrow extends LogicEntities{
 

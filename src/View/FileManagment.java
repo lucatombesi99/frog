@@ -6,7 +6,7 @@ import java.util.LinkedList;
 public class FileManagment {
 
     //LinkedList<String[]> lstSA
-    public static void write(String fileName, String charset,LinkedList<String[]> lstSA) throws IOException, FileNotFoundException {
+    public static void write(String fileName, String charset,LinkedList<String[]> lstSA) throws IOException {
         PrintWriter printWriter = new PrintWriter(
                 new BufferedWriter(
                         new OutputStreamWriter(
@@ -24,7 +24,7 @@ public class FileManagment {
         printWriter.close();
     }
 
-    public static LinkedList<String[]> read(String fileName, String charset) throws FileNotFoundException, IOException {
+    public static LinkedList<String[]> read(String fileName, String charset) throws  IOException {
         LinkedList<String[]> lstRows = null;
 
         BufferedReader buffRead = null;

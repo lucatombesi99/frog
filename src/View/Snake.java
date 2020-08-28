@@ -1,8 +1,8 @@
 package View;
 
-import View.Entity;
+
 import javafx.scene.image.Image;
-import View.Main;
+
 
 import java.io.File;
 

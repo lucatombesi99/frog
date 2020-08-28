@@ -1,6 +1,6 @@
 package View;
 
-import View.Entity;
+
 import javafx.scene.image.Image;
 import java.io.File;
 
@@ -28,7 +28,7 @@ public class Vehicle extends Entity {
             if (speed > 0)
                 setImage(new Image(new File(Main.IMAGE_PATH + "truck2Right.png").toURI().toString(), 90, 90, true, true));
             else
-                setImage(new Image(new File(Main.IMAGE_PATH + "truck2Right.png").toURI().toString(), 90, 90, true, true));
+                setImage(new Image(new File(Main.IMAGE_PATH + "truck2Left.png").toURI().toString(), 90, 90, true, true));
         }
         setX(xPos);
         setY(yPos);

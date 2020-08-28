@@ -15,7 +15,7 @@ public class Turtle extends Entity {
     Image turtleWet2;
     Image turtleWet3;
 
-    boolean sink = false;
+
 
 
 
@@ -33,10 +33,7 @@ public class Turtle extends Entity {
 
 
     }
-    public boolean isWet() {
 
-        return sink;
-    }
     public double getSpeed(){
         return this.speed;
     }
@@ -51,23 +48,22 @@ public class Turtle extends Entity {
 
         if ((now/3/ 900000000 +((int)this.getY()/100) )% 4 == 1) {
             setImage(turtleWet1);
-            sink = true;
+
         } else if ((now/3/900000000+((int)this.getY()/100))% 4 == 2) {
             setImage(turtleWet2);
-            sink = true;
+
         } else if ((now/3/ 900000000 +((int)this.getY()/100) )% 4== 3) {
             setImage(turtleWet3);
-            sink = true;
+
         } else if ((now/3/ 900000000 +((int)this.getY()/100) ) % 4== 0) {
             setImage(turtle2);
-            sink=false;
+
 
         } else if ((now/3/ 900000000 +((int)this.getY()/100) ) % 3== 1) {
             setImage(turtle1);
-            sink=false;
+
         } else if ((now/3/ 900000000 +((int)this.getY()/100) )% 3== 2) {
             setImage(turtle3);
-            sink=false;
 
         }
 

@@ -1,11 +1,9 @@
 package Logic;
 
-import View.Main;
+
 import View.Variables;
-import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 
-import java.io.File;
 
 public class LogicBonus extends LogicEntities{
     private double xPos = -100;

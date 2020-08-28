@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class PlayerData {
 
-    private LinkedList<Player> playerLst;
+    private final LinkedList<Player> playerLst;
 
     public PlayerData() {
         this.playerLst = new LinkedList<Player>();

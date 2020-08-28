@@ -1,7 +1,6 @@
 package View;
 
-import Logic.LogicEntities;
-import Logic.LogicFrog;
+
 import javafx.animation.AnimationTimer;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -14,7 +13,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,24 +22,20 @@ import static View.Main.autoPlay;
 import static View.RankingTable.enableAddButton;
 
 
-public class GameScene { //modificato qualcosa
+public class GameScene {
 
 
     public AnimationTimer timer;
-    Frog log;
-    LogicFrog fr;
-    public static List<LogicEntities> logicEntities;
+    Frog frog;
 
 
     Media media;
-    public static int  timeLeft=61;//da modificare con le scene
-    public static int timeMax=61;
+    public static int  timeLeft;//da modificare con le scene
     public static int points;
-    public static int diffMult=0;
     public static int difficulty;
     public static Scene scene;
 
-    public static int FROGGER_LIVES=5 ; //da modificare con le scene
+    public static int FROGGER_LIVES; //da modificare con le scene
     public static boolean lifelost=false;
     EasyScene easy=new EasyScene();
     MediumScene medium=new MediumScene();
@@ -67,15 +61,6 @@ public class GameScene { //modificato qualcosa
 
     public  void startGame( int difficulty) {
         GameScene.difficulty=difficulty;
-        GameScene.FROGGER_LIVES=5;
-        GameScene.timeLeft=61;
-        GameScene.timeMax=61;
-        GameScene.FROGGER_LIVES-=difficulty;
-        GameScene.timeLeft-=(difficulty*15);
-        GameScene.timeMax-=(difficulty*15);
-        GameScene.diffMult=difficulty+5;
-        points=0;
-        burrowCounter=0;
         lifelost=false;
         isStarted=false;
 
@@ -125,7 +110,7 @@ public class GameScene { //modificato qualcosa
 
        root.getChildren().addAll(timeLabel,pauseButton,scoreLabel);
 
-        log=new Frog(Main.IMAGE_PATH + "froggerUp.png");
+        frog=new Frog(Main.IMAGE_PATH + "froggerUp.png");
 
 
         Rectangle r = new Rectangle();
@@ -149,7 +134,7 @@ public class GameScene { //modificato qualcosa
 
         Main.primaryStage.setScene(scene);
 
-        root.getChildren().addAll(log);
+        root.getChildren().addAll(frog);
 
         startMoving();
         timer.start();
@@ -223,24 +208,7 @@ public class GameScene { //modificato qualcosa
 
         }
 
-    public static void startLogic(long now,AnimationTimer timer){
-        logicEntities=Variables.getLogicElements(interceptable);
-        for(LogicEntities logicEntity:logicEntities)
-            logicEntity.movement(now);
 
-        Stage stage=new Stage();
-        AnchorPane root = new AnchorPane();
-        root.getChildren().addAll(logicEntities);
-        Scene scene=new Scene(root,350,505);
-        LogicFrog fr=new LogicFrog(logicEntities,scene);
-        root.getChildren().addAll(fr);
-        fr.movement(now);
-        stage.setScene(scene);
-        stage.show();
-        isStarted=true;
-        timer.start();
-
-    }
 
 
 

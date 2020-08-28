@@ -2,28 +2,21 @@ package View;
 
 
 import javafx.animation.AnimationTimer;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
+
 
 import java.io.File;
+
 
 public  class PauseClass {
 
 
-
-
-
-
-
-
-
-    public static void  pause(AnimationTimer timer,Button button) {
+    public static void  pause(AnimationTimer timer, Button button) {
 
         timer.stop();
         //Fermo il tempo
@@ -32,12 +25,7 @@ public  class PauseClass {
         Stage pauseStage = new Stage();
         pauseStage.setTitle("Pause Menu");
 
-
         AnchorPane pauseAncPane = new AnchorPane();
-
-
-
-
 
 
         //Immagine di sfondo della finestra di pausa
@@ -85,10 +73,15 @@ public  class PauseClass {
 
         });
 
-        pauseStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
-            public void handle(WindowEvent we) {
-                button.setDisable(false);
-            }
+        pauseStage.setOnCloseRequest(we -> button.setDisable(false));
+
+        pauseStage.setOnCloseRequest(e -> {
+            pauseStage.close();
+            timer.start();
+            button.setDisable(false);
+
         });
     }
+
+
 }

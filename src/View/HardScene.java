@@ -12,7 +12,7 @@ public class HardScene {
     Label difficultyLabel;
     public static AnchorPane backgroundScene;
     ImageView backgroundImage;
-    public static ImageView life1,life2,life3,life4,life5;
+    public static ImageView life1,life2,life3;
     public static Image lifeURL = new Image(new File(Main.IMAGE_PATH + "cuore.png").toURI().toString(), 25,25, true,true);
 
 

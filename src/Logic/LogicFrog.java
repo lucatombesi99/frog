@@ -2,12 +2,8 @@ package Logic;
 
 import View.*;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
-import javafx.scene.media.AudioClip;
 import javafx.scene.paint.Color;
-
-import java.io.File;
 import java.util.List;
 
 public class LogicFrog extends LogicEntities {
@@ -37,13 +33,8 @@ public class LogicFrog extends LogicEntities {
     public static int froggerLives;
     public static boolean lifeLost;
     int burrowCounter;
-    double[] allVar;
+    double[] allVar=new double[7];
     private long lastUpdate = 0 ;//per aggiornare il timer ogni secondo
-
-
-
-///////
-    int size = 30;//serve a fare lo scaling della rana
 
 
     public LogicFrog(List<LogicEntities> interceptable,Scene scene) {
@@ -53,22 +44,21 @@ public class LogicFrog extends LogicEntities {
         setWidth(30);
         setHeight(27.857);
         setFill(Color.BLACK);
-
-
         this.logicEntities = interceptable;
-       // game=Variables.getScene();
-        game=scene;
-        allVar=Variables.getVariables();
-        timeLeft= (int) allVar[0];
-        timeMax= (int) allVar[1];
-        points= (int) allVar[2];
-        diffMult= (int) allVar[3];
-        froggerLives= (int) allVar[4];
-        burrowCounter= (int) allVar[5];
-        difficulty=(int)allVar[6];
+        //game=scene;
+        game=Variables.getScene();
+        timeLeft=61;
+        timeMax=61;
+        froggerLives=5;
+        burrowCounter=0;
+        points=0;
+        difficulty=Variables.getDifficulty();
+        timeLeft-=(difficulty*15);
+        timeMax-=(difficulty*15);
+        diffMult=difficulty+5;
+        froggerLives-=difficulty;
+        timeLeft-=difficulty;
         lifeLost=Variables.isLifeLost();
-
-
 
     }
 
@@ -82,14 +72,12 @@ public class LogicFrog extends LogicEntities {
             lastUpdate=now;
         }
         allVar[0]=timeLeft;
-        allVar[1]=timeMax;
-        allVar[2]=points;
-        allVar[3]=diffMult;
-        allVar[4]=froggerLives;
-        allVar[5]=burrowCounter;
-        allVar[6]=position;
-        allVar[7]=getX();
-        allVar[8]=getY();
+        allVar[1]=points;
+        allVar[2]=froggerLives;
+        allVar[3]=burrowCounter;
+        allVar[4]=position;
+        allVar[5]=getX();
+        allVar[6]=getY();
         Variables.setVariables(allVar);
         Variables.setLifeLost(lifeLost);
 
