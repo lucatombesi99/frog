@@ -61,7 +61,7 @@ public class EasyScene  {
         Log firstLog16 = new Log(1, -50, 138, 1.0);
         Log firstLog17 = new Log(1, 650, 170, -1.0);
         Log firstLog18 = new Log(1, -90, 200, 1.0);
-        Log firstLog19 = new Log(1, 700, 229, -1.0);
+        Log firstLog19 = new Log(1, 600, 229, -1.0);
         Log firstLog20 = new Log(1, -140, 258, 1.0);
 
         backgroundScene.getChildren().addAll(firstLog1, firstLog2, firstLog3, firstLog4, firstLog5,

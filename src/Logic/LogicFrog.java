@@ -24,8 +24,8 @@ public class LogicFrog extends LogicEntities {
     boolean  isDeath = true;//per evitare che i key pressed/realesed in eccesso spostino l'animazione della morte
     boolean noMove=false;//per evitare che la rana continui a spostarsi se morta
     boolean carDeath=false;//per continuare a rimanere nell' if anche se finisce collisione
-    private boolean singleClick = true;//per continuare a rimanere nell' if anche se finisce collisione
-    public static boolean death = false;
+    private boolean singleClick = true;//per evitare che la rana si sposti in maniera diversa a seconda di quanto viene premuto il comando
+    public static boolean death = false;//per evitare che la rana si possa muovere mentre l'animazione della morte è in corso
     int timeLeft;
     int timeMax;
     public static int points;
@@ -67,6 +67,7 @@ public class LogicFrog extends LogicEntities {
 
         control();
 
+        //serve ad aggiornare il timer ogni secondo
         if(now - lastUpdate >= 1_000_000_000) {
             timeLeft--;
             lastUpdate=now;
@@ -81,6 +82,7 @@ public class LogicFrog extends LogicEntities {
         Variables.setVariables(allVar);
         Variables.setLifeLost(lifeLost);
 
+        //morte causata dalla rana che è uscita dalla mappa
         if(getX()<0 || getX()>340 || getY()>505){
             carDeath=true;
             death = true;
@@ -90,6 +92,7 @@ public class LogicFrog extends LogicEntities {
 
         }
 
+        //controllo che permette di riportare i buleani ai valori iniziali dopo che la rana è morta
         if(!isAFK)
             if(getY()==475 && getX()==135 ){
                 death=false;
@@ -99,6 +102,7 @@ public class LogicFrog extends LogicEntities {
                 isAFK=false;
             }
 
+        //morte causata per la fine del tempo
         if(timeLeft==0) {
             carDeath=true;
             death = true;
@@ -112,6 +116,7 @@ public class LogicFrog extends LogicEntities {
 
         }
 
+        //controllo della morte causata dalla collisione con i veicoli o con il serpente
         if(getY()>260)
             if (Collision.specificCollision(logicEntities, this, LogicVehicle.class) || Collision.specificCollision(logicEntities, this, LogicSnake.class) || carDeath) {
                 carDeath=true;
@@ -124,8 +129,8 @@ public class LogicFrog extends LogicEntities {
 
         //ACQUA
         if (getY() < 260 && getY() > 107) {
+            //gestione della collisione della rana con le tartarughe
             if(Collision.specificCollision(logicEntities, this, LogicTurtle.class) && !noMove) {
-
                 LogicTurtle turtle = Collision.getOne(logicEntities, this, LogicTurtle.class);
                 if(!turtle.isWet())
                     this.move(turtle.getSpeed(), 0);
@@ -136,11 +141,12 @@ public class LogicFrog extends LogicEntities {
                     isDeath = Death.waterDeath(now, this);
                     timeLeft=timeMax;
                 }
-
+                //gestione della collisione della rana con i tronchi
             }else if (Collision.specificCollision(logicEntities, this, LogicLog.class) && !noMove) {
                 LogicLog log = Collision.getOne(logicEntities, this, LogicLog.class);
                 this.move(log.getSpeed(), 0);
 
+                //gestione della collisione della rana con i coccodrilli
             }else  if(Collision.specificCollision(logicEntities, this, LogicCrocodile.class) && !noMove){
                 LogicCrocodile croc=Collision.getOne(logicEntities, this, LogicCrocodile.class);
                 crocSpeed=croc.getSpeed();
@@ -154,7 +160,7 @@ public class LogicFrog extends LogicEntities {
                         timeLeft=timeMax;
                     }
 
-
+                //morte causata dal contatto della rana con l'acqua
             }else {
                 death = true;
                 isDeath = false;
@@ -250,26 +256,26 @@ public class LogicFrog extends LogicEntities {
                     if (isDeath) {
                         singleClick = true;
                         position=1;
-                        points+=5*diffMult;
+                        points+=1*diffMult;
                     }
                 } else if (event.getCode() == KeyCode.A ||event.getCode()== KeyCode.LEFT ) {
                     if (isDeath) {
                         singleClick = true;
                         position=2;
-                        points+=5*diffMult;
+                        points+=1*diffMult;
                     }
                 } else if (event.getCode() == KeyCode.S ||event.getCode()== KeyCode.DOWN ) {
                     if(isDeath) {
                         singleClick = true;
                         position=3;
-                        points+=5*diffMult;
+                        points+=1*diffMult;
                     }
                 } else if (event.getCode() == KeyCode.D ||event.getCode()== KeyCode.RIGHT ) {
                     if(isDeath) {
 
                         singleClick = true;
                         position=4;
-                        points+=5*diffMult;
+                        points+=1*diffMult;
                     }
                 }
             });

@@ -8,7 +8,7 @@ public class LogicLog extends LogicEntities {
 
 
     public LogicLog( int type,double x, double y, double speed) {
-        setX(x);
+        setX(x+1);
         setY(y);
         this.speed = speed;
         if(type==0){

@@ -24,12 +24,12 @@ public class RankingTable {
 
     static String fileName = IMAGE_PATH+"RankingTable.csv";
     static String charset = "UTF-8";
-    static PlayerData playerData=new PlayerData();
-    static int numScores=0;
-    static int numClick=0;
+    static PlayerData playerData=new PlayerData(); //lista dei punteggi salvati e da salvare
+    static int numScores=0;//indice utile per capire quanti punteggi sono presenti
+    static int numClick=0;//permette l'inizializzazione della tabella una sola volta
     public static boolean enableAddButton; //serve per impedire che si aggiungano risultati nei momenti sbagliati
 
-    static List<Integer> scoreRecords= new ArrayList<>();
+    static List<Integer> scoreRecords= new ArrayList<>();//copia dei punteggi dei player
 
 
     private static TextField nameInput;
@@ -56,7 +56,7 @@ public class RankingTable {
             }
         }
         numScores = scoreRecords.size();
-        //sorting the scores in decreasing values
+        //riordina i punteggi dal più alto al più basso
         scoreRecords.sort(Collections.reverseOrder());
 
 
@@ -101,9 +101,9 @@ public class RankingTable {
         scoreColumn.setMinWidth(100);
         scoreColumn.setCellValueFactory(new PropertyValueFactory<>("score"));
 
+        //inizializzazione tabella
         if (numClick < 1) {
             table = new TableView<>();
-
             table.setItems(getPlayer(playerData));
 
             //noinspection unchecked
@@ -185,10 +185,6 @@ public class RankingTable {
         ObservableList<Player> players = FXCollections.observableArrayList();
         LinkedList<Player>  allPlayers= sortedPlayers.getListOfPlayers();
         players.addAll(allPlayers);
-
-
-
-
 
         return players;
 

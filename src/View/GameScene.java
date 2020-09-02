@@ -152,6 +152,8 @@ public class GameScene {
 
     }
 
+    //metodo che fa muovere le componenti visive,inizializza le componenti logiche
+    // mediante il metodo startLogic,gestisce l'animazione della perdita della vita e fa comparire la tabella a fine partita
     public void startMoving() {
         timer = new AnimationTimer() {
             @Override

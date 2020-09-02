@@ -21,6 +21,7 @@ public class Main extends Application {
 
     public final static String AUDIO_PATH = "Resources\\Audio\\";
     public final static String IMAGE_PATH = "Resources\\Images\\";
+    static boolean answer=false;
     final static int SCREEN_MENU_WIDTH = 460;
     final static int SCREEN_MENU_HEIGHT= 280;
     public static Scene scene;
@@ -158,7 +159,11 @@ public class Main extends Application {
         });
 
         //Action if x button is clicked
-        primaryStage.setOnCloseRequest(this::confirmation);
+        primaryStage.setOnCloseRequest(we ->  {
+           confirmation(we);
+        });
+
+
 
 
 
@@ -180,7 +185,8 @@ public class Main extends Application {
             e.consume();
             primaryStage.close();
         } else {
-            // ... user chose CANCEL or closed the dialog
+            alert.close();
+            e.consume();
         }
 
     }

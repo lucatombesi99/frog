@@ -13,7 +13,7 @@ public class LogicBurrow extends LogicEntities{
         setX(x);
         setY(y);
         setHeight(31);
-        setWidth(31);
+        setWidth(29);
         setFill(Color.RED);
     }
 
